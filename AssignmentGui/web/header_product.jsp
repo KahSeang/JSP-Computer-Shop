@@ -66,7 +66,7 @@
                 align-items: center;
                 border: 1px solid #ddd;
                 border-radius: 25px;
-                padding: 8px 15px;
+                padding: 3px 15px;
                 background: #fff;
             }
 
@@ -74,7 +74,7 @@
                 border: none;
                 outline: none;
                 width: 100%;
-                font-size: 16px;
+                font-size: 12px;
                 background: transparent;
             }
 
@@ -82,7 +82,7 @@
                 background: transparent;
                 border: none;
                 cursor: pointer;
-                font-size: 18px;
+                font-size: 16px;
                 color: #555;
             }
 
