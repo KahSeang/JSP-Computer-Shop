@@ -6,127 +6,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wishlist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
         }
-        .wishlist {
-            width: 80%;
+        .wishlist-container {
+            width: 90%;
             margin: auto;
-            border-collapse: collapse;
+            padding: 20px 0;
         }
-        .wishlist th, .wishlist td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
+        .wishlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
         }
-        .wishlist th {
-            background-color: #f4f4f4;
+        .wishlist-header h2 {
+            font-size: 24px;
+            font-weight: bold;
         }
+        
         .add-to-cart {
-            background-color: black;
+            background: red;
             color: white;
-            padding: 5px 10px;
+        }
+        .wishlist-items {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 10px;
+            white-space: nowrap;
+            scrollbar-width: thin;
+            scrollbar-color: lightgray transparent;
+        }
+        .wishlist-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Aligns text to left */
+        }
+        .wishlist-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .wishlist-item h3 {
+            font-size: 18px;
+            margin: 10px 0 5px;
+        }
+        .wishlist-item p {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 10px;
+            margin: 0px 10px;
+        }
+        .wishlist-item .price {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .add-to-cart-btn {
+            background-color: #bebebe;
+            color: white;
+            padding: 10px 15px;
             border: none;
             cursor: pointer;
-        }
-        .delete {
-            color: red;
-            cursor: pointer;
-        }
-        .product {
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 4px;
+            margin-left: auto; /* Moves it to the right */
+            margin-right: 10px;
         }
-        .product img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 5px;
+        
+        .add-to-cart-btn:hover{
+            background-color:#ddd;
         }
-        .product-info {
-            text-align: left;
-        }
-        .product-id {
-            font-size: 12px;
-            color: gray;
-        }
+
+
     </style>
 </head>
 <body>
-            <jsp:include page="header.jsp" />
-
-    <h2 style="text-align: center;">♡ WISHLIST</h2>
-    <table class="wishlist">
-        <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Stock Status</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>
-                <div class="product">
-                    <img src="sources/images/products/lp_1_a.png" alt="Wooden Classical Chairs">
-                    <div class="product-info">
-                        Wooden Classical Chairs<br>
-                        <span class="product-id">SKU: 12345</span>
-                    </div>
-                </div>
-            </td>
-            <td><button>-</button> 1 <button>+</button></td>
-            <td><del>$405.00</del> <b>$375.00</b></td>
-            <td>✔ 188 in stock</td>
-            <td><button class="add-to-cart">Add to Cart</button> <span class="delete">🗑</span></td>
-        </tr>
-        <tr>
-            <td>
-                <div class="product">
-                    <img src="bag.jpg" alt="Xanna Note">
-                    <div class="product-info">
-                        Xanna Note<br>
-                        <span class="product-id">SKU: 12345-3-1-1</span>
-                    </div>
-                </div>
-            </td>
-            <td><button>-</button> 1 <button>+</button></td>
-            <td>$505.00</td>
-            <td>✔ 188 in stock</td>
-            <td><button class="add-to-cart">Add to Cart</button> <span class="delete">🗑</span></td>
-        </tr>
-        <tr>
-            <td>
-                <div class="product">
-                    <img src="airfryer.jpg" alt="Air Fryer with DualZone">
-                    <div class="product-info">
-                        Air Fryer with DualZone<br>
-                        <span class="product-id">SKU: 12345-1</span>
-                    </div>
-                </div>
-            </td>
-            <td><button>-</button> 1 <button>+</button></td>
-            <td>$300.00</td>
-            <td>✔ 187 in stock</td>
-            <td><button class="add-to-cart">Add to Cart</button> <span class="delete">🗑</span></td>
-        </tr>
-        <tr>
-            <td>
-                <div class="product">
-                    <img src="jacket.jpg" alt="Stainless Steel Freing">
-                    <div class="product-info">
-                        Stainless Steel Freing<br>
-                        <span class="product-id">SKU: 12345-3</span>
-                    </div>
-                </div>
-            </td>
-            <td><button>-</button> 1 <button>+</button></td>
-            <td><del>$705.00</del> <b>$545.00</b></td>
-            <td>✔ 188 in stock</td>
-            <td><button class="add-to-cart">Add to Cart</button> <span class="delete">🗑</span></td>
-        </tr>
-    </table>
+    <jsp:include page="header.jsp" />
+    
+    <div class="wishlist-container">
+        <div class="wishlist-header">
+            <h2>Your Wishlist</h2>
+            
+        </div>
+        
+        <div class="wishlist-items">
+            <div class="wishlist-item">
+                <img src="sources/images/products/lp_1_a.png" alt="Wooden Classical Chairs">
+                <h3>Wooden Classical Chairs</h3>
+                <p>Retro design featuring quality wood craftsmanship.</p>
+                <span class="price">$375.00</span>
+                <button class="add-to-cart-btn"> <i class="fas fa-shopping-cart"></i></button>
+            </div>
+           <div class="wishlist-item">
+                <img src="sources/images/products/lp_1_a.png" alt="Wooden Classical Chairs">
+                <h3>Wooden Classical Chairs</h3>
+                <p>Retro design featuring quality wood craftsmanship.</p>
+                <span class="price">$375.00</span>
+                <button class="add-to-cart-btn"> <i class="fas fa-shopping-cart"></i></button>
+            </div>
+           <div class="wishlist-item">
+                <img src="sources/images/products/lp_1_a.png" alt="Wooden Classical Chairs">
+                <h3>Wooden Classical Chairs</h3>
+                <p>Retro design featuring quality wood craftsmanship.</p>
+                <span class="price">$375.00</span>
+                <button class="add-to-cart-btn"> <i class="fas fa-shopping-cart"></i></button>
+            </div>
+            <div class="wishlist-item">
+                <img src="sources/images/products/lp_1_a.png" alt="Wooden Classical Chairs">
+                <h3>Wooden Classical Chairs</h3>
+                <p>Retro design featuring quality wood craftsmanship.</p>
+                <span class="price">$375.00</span>
+                <button class="add-to-cart-btn"> <i class="fas fa-shopping-cart"></i></button>
+            </div>
+            <div class="wishlist-item">
+                <img src="sources/images/products/lp_1_a.png" alt="Wooden Classical Chairs">
+                <h3>Wooden Classical Chairs</h3>
+                <p>Retro design featuring quality wood craftsmanship.</p>
+                <span class="price">$375.00</span>
+                <button class="add-to-cart-btn"> <i class="fas fa-shopping-cart"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    <jsp:include page="footer.jsp" />
 </body>
 </html>
+        
