@@ -28,7 +28,7 @@
         .contact-box {
             width: 22%; 
             padding: 20px; 
-            background: #72bcd4; 
+            background: #7DA0CA; 
             color: white; 
             border-radius: 15px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;

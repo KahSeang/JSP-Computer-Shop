@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.sql.*;
 
 import db.DBConnection; 
+import da.UserDAO;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
@@ -25,7 +26,10 @@ public class LoginServlet extends HttpServlet {
 
         try {
             conn = DBConnection.getConnection();
+/*UserDAO userDAO = new UserDAO();
 
+userDAO.loginUser(username, password);
+*/
             // 换成 USERDAO 的LOGIN FUNCTION
             String sql = "SELECT * FROM users WHERE username=? AND password=?";
             pst = conn.prepareStatement(sql);
@@ -36,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             if (rs.next()) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
-                response.sendRedirect("home.jsp"); 
+                response.sendRedirect("home.jsp");  //besn 要SESSION
             } else {
                 request.setAttribute("errorMessage", "Invalid username or password.");
                 request.getRequestDispatcher("login.jsp").forward(request, response);

@@ -11,6 +11,7 @@
                 box-sizing: border-box;
                 margin: 0;
                 padding: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             }
 
             body {
@@ -181,7 +182,7 @@
             <nav>
                 <ul class="navlinks">
                     <li><a href="aboutus.jsp">About Us</a></li>
-                    <li><a href="product.jsp">Product</a></li>
+                    <li><a href="ProductServlet">Product</a></li>
                     <li><a href="wishlist.jsp">Wishlist</a></li>
                                         <li><a href="contactus.jsp">Contact Us</a></li>
 
@@ -213,7 +214,7 @@
             <!-- Icons (Cart and User) -->
             <!-- Icons (Cart and User) -->
             <div class="icons">
-                <a href="${pageContext.request.contextPath}/cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                 <div class="user-menu">
                     <img src="sources/images/user.png" alt="User Icon" class="user-icon" onclick="toggleUserDropdown()">
                     <div id="userDropdown" class="user-dropdown">

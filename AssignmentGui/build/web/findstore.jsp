@@ -1,12 +1,9 @@
-
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store Finder - Harvey Norman</title>
+    <title>Store Finder</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 0; margin-top: 20px;}
         .container { width: 80%; margin: auto; text-align: center; }
@@ -90,7 +87,7 @@
         
         <div id="pahang" class="store-section">
             <h2>Pahang</h2>
-            <p style="margin: 20px;"><b>Harvey Norman Pahang</b></p>
+            <p style="margin: 20px;"><b>COT Pahang</b></p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.8573985795656!2d103.28663097481254!3d3.8407737961330253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31c8ba3550d6e5a7%3A0x6d32a9539f066a18!2sTunku%20Abdul%20Rahman%20University%20of%20Management%20and%20Technology%20(TAR%20UMT)%20Pahang%20Branch!5e0!3m2!1sen!2smy!4v1741994061421!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <div class="info">
                 <p class="bold">Address:</p>

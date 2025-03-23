@@ -3,8 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/register.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/entity/Category.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/Controller/LoginServlet.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/entity/User.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/da/CategoryDAO.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/Controller/ProductServlet.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/entity/Manager.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/entity/Payment.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/login.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/home.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/entity/Cart.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/payment.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/da/ProductDAO.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/Controller/CategoryServlet.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/sources/images/imgslider1.avif</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/sources/images/imgslider3.jpeg</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/Controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/footer.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/entity/Customer.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/da/UserDAO.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/admin_modifyproducts.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/abcd.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/error.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/entity/Product.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/entity/CartItem.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/java/entity/PaymentMethodID.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/product.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/src/conf/persistence.xml</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/header.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/product_details.jsp</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/AssignmentGui/web/cart.jsp</file>
         </group>
     </open-files>
 </project-private>
