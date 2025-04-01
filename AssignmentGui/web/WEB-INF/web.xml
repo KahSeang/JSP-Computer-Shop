@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>Controller.HomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterAdminServlet</servlet-name>
+        <servlet-class>Controller.RegisterAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HeaderNavServlet</servlet-name>
+        <servlet-class>Controller.HeaderNavServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductAddServlet</servlet-name>
+        <servlet-class>Controller.ProductAddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserUpdateServlet</servlet-name>
+        <servlet-class>Controller.UserUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WishlistServlet</servlet-name>
+        <servlet-class>Controller.WishlistServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddressServlet</servlet-name>
+        <servlet-class>Controller.AddressServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/HomeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterAdminServlet</servlet-name>
+        <url-pattern>/RegisterAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HeaderNavServlet</servlet-name>
+        <url-pattern>/HeaderNavServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductAddServlet</servlet-name>
+        <url-pattern>/ProductAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserUpdateServlet</servlet-name>
+        <url-pattern>/UserUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WishlistServlet</servlet-name>
+        <url-pattern>/WishlistServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddressServlet</servlet-name>
+        <url-pattern>/AddressServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>HomeServlet</welcome-file>
     </welcome-file-list>
-    
     <servlet>
         <servlet-name>CategoryServlet</servlet-name>
         <servlet-class>Controller.CategoryServlet</servlet-class>

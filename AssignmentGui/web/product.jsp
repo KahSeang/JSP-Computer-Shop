@@ -2,6 +2,8 @@
 <%@page import="java.util.List, entity.Product" %>
 <%@ page import="entity.Category" %>
 <jsp:useBean id="productList" class="java.util.ArrayList" scope="session"/>
+<jsp:useBean id="categories" class="java.util.ArrayList" scope="session"/>
+
 
 <!DOCTYPE html>
 <html>
@@ -26,12 +28,19 @@
                 margin: 20px auto;
             }
             .product {
+                width: 350px; /* Fixed width */
+                height: 350px; /* Fixed height */
                 background: white;
                 padding: 15px;
                 border-radius: 10px;
                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
                 transition: transform 0.2s ease-in-out;
                 cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                text-align: center;
             }
             .product:hover {
                 transform: scale(1.05);
@@ -83,12 +92,11 @@
                 color: #007aff;
             }
 
-            /* Header Styles */
             .header {
                 background: white;
                 padding: 15px 40px;
                 display: flex;
-                justify-content: space-between; /* Space out logo, nav, and search bar */
+                justify-content: space-between;
                 align-items: center;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
                 position: sticky;
@@ -101,34 +109,37 @@
                 font-size: 24px;
                 font-weight: bold;
                 color: #333;
-                margin-right: 20px; /* Add some space between logo and categories */
+                margin-right: 20px;
             }
-
             .search-bar {
-                flex: 0 0    200px; /* Set a fixed width for the search bar */
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 border: 1px solid #ddd;
                 border-radius: 25px;
-                padding: 3px 10px; /* Reduced padding */
+                padding: 5px 10px;
                 background: #fff;
+                width: 250px;
             }
 
-            .search-bar input {
+            .search-bar input[type="text"] {
+                flex: 1; /* Allows text input to take available space */
                 border: none;
                 outline: none;
-                width: 100%;
-                font-size: 12px; /* Smaller font size */
+                font-size: 14px;
                 background: transparent;
+                padding: 5px;
             }
 
-            .search-bar button {
+            .search-bar input[type="submit"] {
                 background: transparent;
                 border: none;
                 cursor: pointer;
-                font-size: 14px; /* Smaller icon size */
+                font-size: 16px;
                 color: #555;
+                padding: 5px;
             }
+
 
             .icons {
                 display: flex;
@@ -155,28 +166,35 @@
             <div class="logo">COT</div>
             <nav class="category-bar">
                 <%
-                    List<Category> categories = (List<Category>) session.getAttribute("categories"); // Get from session
-                    if (categories != null) {
-                        for (Category category : categories) {
+                    if (!categories.isEmpty()) {
+                        for (Category c : (List<Category>) categories) {
                 %>
-                <a href="#"> <%= category.getCategoryname()%> </a>
-                <%
+                <a href="ProductServlet?categoryId=<%= c.getId()%>">
+                    <%= c.getName()%> </a>
+                    <%
+                            }
                         }
-                    }
-                %>
-            </nav>
+                    %>
+
+            </nav>         
+            <%--<button type="submit">&#128269;</button> --%>
+
             <div class="search-bar">
-                <input type="text" placeholder="Search products...">
-                <button>&#128269;</button>
+                <form action="ProductServlet" method="GET">
+                    <input type="text" name="search" placeholder="Search products...">
+                    <input type="submit" value="&#128269;">
+
+                </form>
+
             </div>
         </header>
 
 
         <div class="product-grid" style="margin-top: 50px;">
-         <%
-        if (!productList.isEmpty()) {
-            for (Product product : (List<Product>) productList) {
-    %>
+            <%
+                if (!productList.isEmpty()) {
+                    for (Product product : (List<Product>) productList) {
+            %>
             <a href="ProductServlet?action=viewDetails&id=<%= product.getProductID()%>"  class="product" style="text-decoration:none;color: black;">
                 <img src="<%= product.getImage1()%>" alt="<%= product.getName()%>">
                 <h3><%= product.getName()%></h3>

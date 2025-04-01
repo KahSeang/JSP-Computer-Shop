@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "RegisterServlet", urlPatterns = {"/RegisterServlet"})
 public class RegisterServlet extends HttpServlet {
 
+    //COMMON FUNCTION CAN ANY NAME 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -23,29 +24,38 @@ public class RegisterServlet extends HttpServlet {
             String password = request.getParameter("password");
             String confirmPassword = request.getParameter("confirm_password");
 
-            if (email == null || email.isEmpty() ||
-                username == null || username.isEmpty() ||
-                password == null || password.isEmpty() ||
-                confirmPassword == null || confirmPassword.isEmpty()) {
-                
+            if (email == null || email.isEmpty()
+                    || username == null || username.isEmpty()
+                    || password == null || password.isEmpty()
+                    || confirmPassword == null || confirmPassword.isEmpty()) {
+
                 out.println("<script>alert('All fields are required!'); window.location='register.jsp';</script>");
                 return;
             }
 
+            // Check if passwords match
             if (!password.equals(confirmPassword)) {
                 out.println("<script>alert('Passwords do not match!'); window.location='register.jsp';</script>");
                 return;
             }
 
-            User user = new User(email, username, password);
             UserDAO userDAO = new UserDAO();
 
-            boolean isRegistered = userDAO.registerUser(user);
+            // Check if user already exists
+            if (userDAO.userExists(username, email)) {
+                out.println("<script>alert('Username or Email already exists!'); window.location='register.jsp';</script>");
+                return;
+            }
+
+            // Register user
+            User user = new User(email, username, password,1,null);
+            boolean isRegistered = userDAO.registerUser(user,response);
 
             if (isRegistered) {
-                response.sendRedirect("register.jsp");
+                out.println("<script>alert('Registration Sucessfull! .');</script>");
+                response.sendRedirect("login.jsp");
             } else {
-                out.println("<script>alert('Registration failed! Username or Email may already exist.'); window.location='register.jsp';</script>");
+                out.println("<script>alert('Registration failed! Try again later.'); window.location='register.jsp';</script>");
             }
         }
     }
@@ -67,4 +77,3 @@ public class RegisterServlet extends HttpServlet {
         return "Handles user registration";
     }
 }
-

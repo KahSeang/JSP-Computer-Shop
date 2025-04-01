@@ -13,21 +13,21 @@
         <title>JSP Page</title>
     </head>
     <body>
-<ul>
-    <% 
-        List<String> categoryNames = (List<String>) request.getAttribute("categoryNames");
-        if (categoryNames != null) {
-            for (String category : categoryNames) { 
-    %>
-                <li><%= category %></li>
-    <% 
-            }
-        } else { 
-    %>
+        <ul>
+            <% 
+                List<String> categoryNames = (List<String>) request.getAttribute("categoryNames");
+                if (categoryNames != null) {
+                    for (String category : categoryNames) { 
+            %>
+            <li><%= category %></li>
+                <% 
+                        }
+                    } else { 
+                %>
             <li>No categories available</li>
-    <% 
-        } 
-    %>
-</ul>
+                <% 
+                    } 
+                %>
+        </ul>
     </body>
 </html>

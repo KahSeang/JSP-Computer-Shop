@@ -1,6 +1,15 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page import="entity.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <jsp:useBean id="product" class="entity.Product" scope="session"/>
+<% 
+    String productId = request.getParameter("product_id");
+    if (productId != null) {
+        session.setAttribute("product_id", productId);
+    }
+%>
+
+<%@ page import="java.util.List, entity.Storage" %>
 
 <html>
     <head><title>Product Details</title>
@@ -222,6 +231,19 @@
                 color: #666;
                 line-height: 1.4;
             }
+            .favorite-button {
+                border: none;
+                background: none;
+                cursor: pointer;
+            }
+
+            .favorite-button .fas.fa-heart {
+                color: grey;
+            }
+
+            .favorite-button .fas.fa-heart.active {
+                color: red;
+            }
 
         </style>
 
@@ -250,23 +272,42 @@
             <div class="product-details">
                 <h2>
                     <jsp:getProperty name='product' property='name'/>
-                    <i class="fas fa-heart favorite-icon" onclick="toggleFavorite()"></i>
+                    
+                    <form action="wishlist" method="post">
+                        <input type="hidden" name="product_id" value="<%= product.getProductID()%>">
+                        <input type="hidden" name="action" value="${isFavorite ? 'remove' : 'add'}">
+                        <button type="submit" class="favorite-button">
+                            <i class="fas fa-heart ${isFavorite ? 'active' : ''}"></i>
+                        </button>
+                    </form>
+
+
                 </h2>
+
                 <p><jsp:getProperty name='product' property='author'/> </p>
                 <p>Stock : <jsp:getProperty name='product' property='stockQuantity'/></p>
 
-
-                <!-- Pricing Options -->
+                <%
+                    Object obj = session.getAttribute("storageOptions");
+                    List<Storage> storageOptions = null;
+                    if (obj instanceof List) {
+                        storageOptions = (List<Storage>) obj;
+                    }
+                %>
                 <div class="pricing-section">
-                    <div class="price-option" data-price="4099" onclick="selectPriceOption(this)">
-                        <h3>512GB</h3>
-                        <p>From RM 4,099<br>or RM 170.79/month for 24 months*</p>
+                    <% if (storageOptions != null && !storageOptions.isEmpty()) { %>
+                    <% for (Storage storage : storageOptions) {%>
+                    <div class="price-option" data-price="<%= storage.getPrice() + product.getPrice()%>" onclick="selectPriceOption(this)">
+                        <h3><%= storage.getSizeLabel()%></h3>
+                        <p>From RM <%= storage.getPrice() + product.getPrice()%></p>
                     </div>
-                    <div class="price-option" data-price="4999" onclick="selectPriceOption(this)">
-                        <h3>1TB</h3>
-                        <p>From RM 4,999<br>or RM 208.29/month for 24 months*</p>
-                    </div>
+                    <% } %>
+                    <% } else { %>
+                    <p>No storage options available.</p>
+                    <% }%>
                 </div>
+
+
                 <!-- Buttons -->
                 <div class="buttons">
                     <button class="buy-now" disabled>BUY NOW</button>
@@ -305,9 +346,25 @@
                 section.style.display = section.style.display === "block" ? "none" : "block";
             }
 
-            function toggleFavorite() {
-                let heartIcon = document.querySelector(".favorite-icon");
-                heartIcon.classList.toggle("active");
+            function toggleFavorite(productId) {
+                let heartIcon = document.querySelector(`.favorite-icon[data-id="${productId}"]`);
+                let isFavorite = heartIcon.classList.contains("active");
+
+                // Send request to server to add/remove wishlist
+                fetch("wishlist", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                    body: `product_id=${productId}&action=${isFavorite ? 'remove' : 'add'}`
+                })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                heartIcon.classList.toggle("active");
+                            } else {
+                                alert("Something went wrong!");
+                            }
+                        })
+                        .catch(error => console.error("Error:", error));
             }
 
             function selectPriceOption(selectedOption) {
@@ -329,7 +386,7 @@
                 const selectedOption = document.querySelector('.price-option.selected');
                 if (selectedOption) {
                     const price = selectedOption.getAttribute('data-price');
-                           alert(`You selected the option with price: RM ${price}`);
+                    alert(`You selected the option with price: RM ${price}`);
                     // Proceed with the purchase logic
                 } else {
                     alert('Please select a price option before proceeding.');
@@ -341,7 +398,7 @@
                 const selectedOption = document.querySelector('.price-option.selected');
                 if (selectedOption) {
                     const price = selectedOption.getAttribute('data-price');
-                           alert(`Added to cart: RM ${price}`);
+                    alert(`Added to cart: RM ${price}`);
                     0
 
                     // Proceed with the add-to-cart logic

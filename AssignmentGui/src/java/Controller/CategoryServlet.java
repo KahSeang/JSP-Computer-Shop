@@ -41,4 +41,5 @@ public class CategoryServlet extends HttpServlet {
         categoryDAO.close();
     }
 }
+
 */

@@ -1,4 +1,5 @@
-
+<%@ page import="java.util.List" %>
+<%@ page import="entity.Category" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -569,34 +570,30 @@
 
             </div>
         </section>
+
         <section class="products-section">
             <h1 class="section-title">Categories</h1>
 
-            <!-- Scrollable Container -->
             <div class="scrollable-container">
-                <!-- Product Cards -->
-                <div class="scrollable-card2" style="background-size: cover;">
-                    <img src="sources/images/products/lp_1_a.png" alt="Ultrabooks">
-                    <h2>Ultrabooks</h2>
-                </div>
-
-                <div class="scrollable-card2" style="background-size: cover;">
-                    <img src="sources/images/products/lp_2_a.png" alt="Ultrabooks">
-                    <h2>Ultrabooks</h2>
-                </div>
-
-                <div class="scrollable-card2" style="background-size: cover;">
-                    <img src="sources/images/products/lp_3_a.png" alt="Ultrabooks">
-                    <h2>Ultrabooks</h2>
-                </div>
-
-                <div class="scrollable-card2" style="background-size: cover;">
-                    <img src="sources/images/products/lp_4_a.png" alt="Ultrabooks">
-                    <h2>Ultrabooks</h2>
-                </div>
+                <%
+                    List<Category> categories = (List<Category>) request.getAttribute("categories");
+                        if (categories != null && !categories.isEmpty()) {
+                        for (Category category : categories) {
+                %> 
+                <a href="ProductServlet?categoryId=<%= category.getId()%>" style="text-decoration: none;">
+                    <div class="scrollable-card2" style="background-size: cover;">
+                        <img src="<%= category.getImage()%>" alt="<%= category.getName()%>">
+                        <h2><%= category.getName()%></h2>
+                    </div>
+                </a>
+                <%
+                    }
+                } else {
+                %>
+                <p>No categories available.</p>
+                <% }%>
             </div>
         </section>
-        <!-- Horizontal Scrollable Container Section -->
 
 
         <h1 style="text-align: center;">FAQs</h1>

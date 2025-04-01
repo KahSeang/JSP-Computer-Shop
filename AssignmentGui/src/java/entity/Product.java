@@ -3,7 +3,7 @@ package entity;
 public class Product {
 
     private int productID;
-    private String categoryID;
+    private String categoryID; //要CHECK 是不是要换成 CATEGORY DATA TYPE
     private String name;
     private String description;
     private double price;
@@ -17,24 +17,9 @@ public class Product {
     private String author;
     private String details;
 
-    /*
-    CREATE TABLE Product (
-    productID INT PRIMARY KEY,
-    categoryID VARCHAR(255) NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    description VARCHAR(500),
-    price DOUBLE NOT NULL,
-    stockQuantity INT NOT NULL,
-    image1 VARCHAR(255),
-    image2 VARCHAR(255),
-    image3 VARCHAR(255),
-    image4 VARCHAR(255),
-    image5 VARCHAR(255),
-    discountID VARCHAR(255)
-    );
-     */
     public Product() {
     }
+    //FORGOT ADD DETAILS ADD AUTHOR
 
     public Product(int productID, String categoryID, String name, String description, double price, int stockQuantity, String image1, String image2, String image3, String image4, String image5, String discountID) {
         this.productID = productID;
@@ -49,6 +34,22 @@ public class Product {
         this.image4 = image4;
         this.image5 = image5;
         this.discountID = discountID;
+    }
+
+    public Product(int productID, String categoryID, String name, String description, double price, int stockQuantity, String image1, String image2, String image3, String image4, String image5, String discountID ,String details) {
+        this.productID = productID;
+        this.categoryID = categoryID;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.image1 = image1;
+        this.image2 = image2;
+        this.image3 = image3;
+        this.image4 = image4;
+        this.image5 = image5;
+        this.discountID = discountID;
+        this.details = details;
     }
 
     public int getProductID() {
